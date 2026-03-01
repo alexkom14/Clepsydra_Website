@@ -1,0 +1,19 @@
+{%extends "layout.html"%}
+{%block cssfiles%}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/article_previews.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/carousel.css')}}">
+{%endblock cssfiles%}
+
+{% block info %}
+    <title>Clepsydra - Home</title>
+    <meta name="description" content="Welcome the home of Clepsydra. Clepsydra is a website where you can follow
+    environmental and sustainability news about businesses and how you can be more sustainable yourself either through
+    reading selected articles or by giving a picture of your carbon footprint through our test. "/>
+{% endblock info %}
+
+{%block content%}
+
+    {%include 'carousel.html'%}
+    {%include 'article_previews.html'%}
+
+{%endblock content%}

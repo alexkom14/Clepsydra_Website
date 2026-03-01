@@ -1,0 +1,58 @@
+{%extends 'layout.html'%}
+{% block cssfiles %}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/article_previews.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/articles.css')}}">
+{%endblock cssfiles%}
+
+{% block info %}
+    <title>Clepsydra - Personal Impact</title>
+    <meta name="description" content="This page contains an array of articles aiming to educate and promote
+    sustainability and environmentalist conscience in our everyday lives to minimize the impact of climate change."/>
+{% endblock info %}
+
+{%block content%}
+        <!--Jumbotron-->
+    <div class="jumbotron jumbotron-fluid hero  has-image ">
+        <div class="hero-overlay" style="background-image: url({{ url_for('static', filename='resources/hero_images/tree_building.jpg') }});"
+            alt="Tree Building">
+        </div>
+
+        <div class="container" id="hero_text">
+            <h1> <span>Your actions can make the difference</span></h1>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1><span></span> </h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--END Jumbotron-->
+
+    <!--Previews  section-->
+    <div class="container">
+        <h2 class="underLine_frontpage"><a class="articlesHeader" href="#">Personal impact</a></h2>
+        <!--One row with two articles-two columns-->
+        <div class="row">
+            {%for article in articles%}
+            <div class="col-6">
+                <div class="card">
+                    <a href="{{ url_for('article', article_id=article.id) }}" class="card-link">
+                        <img class="card-img-top" src="{{ url_for('static', filename='resources/hero_images/'+ article.image) }}"
+                            alt="less fast fashion" />
+                    </a>
+
+                    <div class="card-body">
+                        <a href="{{ url_for('article', article_id=article.id) }}" class="card-title">{{article.title}}</a>
+                        <p class="card-text">
+                            {{my_function(' '.join(article.content.split()[:50])) }}
+                        </p>
+                        <p class="writer">By {{article.author}}</p>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,66 @@
+:root {
+    --primary_color: #F29040;
+    --secondar_color: #203b46;
+ }
+
+.navbar {
+    background: var(--secondar_color);
+    position: relative;
+    z-index: 0;
+}
+
+.navbar a {
+    color: white  !important;
+}
+
+/*---------SEARCH BAR CSS--------*/
+input.form-control:focus {
+    border-color: white;
+    -webkit-box-shadow: 0 0px 0px 0px #999;
+    -moz-box-shadow: 0 0px 0px 0px #999;
+    box-shadow: 0 0px 0px 0px #999;
+    background-color: #c2bfbf1e;
+    color: rgb(219, 219, 219);
+    transition: 0.4s;
+}
+
+input.form-control::placeholder {
+    color: rgb(216, 216, 216);
+}
+
+input.form-control {
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: solid;
+    border-left-style: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-color: white;
+    color: white;
+    background-color: transparent;
+}
+
+/*--------END EARCH BAR CSS------*/
+
+/*underline effect*/
+#navbar-home-page .nav-item {
+    position: relative;
+}
+
+#navbar-home-page  .nav-item:after {
+    position: absolute;
+    bottom: 0.05rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background:white;
+    height: 1px;
+    transition: .5s;
+}
+
+#navbar-home-page  .nav-item:hover:after {
+    width: 100%;
+}

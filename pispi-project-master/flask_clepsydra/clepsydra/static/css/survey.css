@@ -1,0 +1,46 @@
+.btn-close.btn-lg {
+    font-size: 1.5rem !important;
+}
+
+.progress.positioning {
+    position: absolute;
+    bottom: 50%;
+    right: 12.5%;
+    left: 12.5%;
+    height: 0.2rem;
+    z-index: 0;
+}
+
+/* max-width number from bootstrap https://getbootstrap.com/docs/5.0/layout/breakpoints/#max-width */
+@media (max-width: 575.98px) {
+    .progress.positioning {
+        position: absolute;
+        bottom: 50%;
+        right: 0%;
+        left: 0%;
+        height: 0.4rem;
+        z-index: 0;
+    }
+}
+
+.navlinks-z-index {
+    background-color: #f8f9fa;
+    z-index: 1000;
+}
+
+.hover-animation {
+    transition: all 0.2s ease-in;
+}
+
+.hover-animation:hover {
+    transform: scale(1.1);
+}
+
+.navigation-bar .disabled {
+    opacity: 40%;
+}
+
+input[type=radio],
+input[type="checkbox"] {
+    transform: scale(1.5);
+}

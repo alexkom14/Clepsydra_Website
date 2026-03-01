@@ -1,0 +1,166 @@
+{% extends 'layout.html' %}
+
+{% block cssfiles %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/solid_navbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/user-profile.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/flag-icon.css') }}">
+{% endblock cssfiles %}
+{% block info %}
+    <title>Clepsydra - {{user.username}}</title>
+    <meta name="description" content="This is the profile page of your account on Clepsydra. You can see the charts and
+    score of your carbon footprint."/>
+{% endblock info %}
+
+{% block content %}
+    <!---------------------------- USER PROFILE ---------------------------->
+    <div class="container-fluid text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-sm-8">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <div class="user-profile">
+                            <h3 class="user-name my-3">Hello, {{ user.username }}</h3>
+                            <img src="{{ image_file }}"
+                                 class="rounded-circle" alt="User Image" width="128px" height="128px">
+                            <div class="position-relative">
+                                <span
+                                        class="position-absolute top-0 start-50 translate-middle badge bg-danger rounded-pill">
+                                    <label id="pointer" class="lead" for="upload-photo">+</label>
+                                </span>
+                                <input type="file" name="photo" id="upload-photo" accept="image/png, image/jpeg"
+                                       style="height: 1px; width: 1px;">
+                            </div>
+                            <div class="user-details">
+                                <h5 class="d-inline user-email lead">{{ user.email }}</h5>
+                            </div>
+                        </div>
+                        <h1 class="display-4 fw-bold my-4">Your survey results</h1>
+                        {% if not survey_done %}
+                            <div class=" mx-auto">
+                                <p class="lead m-4">You haven't completed the survey yet.</p>
+
+                                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-4">
+                                    <button type="button" class="btn btn-primary btn-lg px-4" id="survey-start-button" onclick="start_survey()">Take the Survey
+                                    </button>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="charts row justify-content-center gx-5">
+                                <div class="col-12 col-xl-6 p-2">
+                                    <canvas id="surveyDoughnut">
+                                    </canvas>
+                                    <p>Your percentage of environmental impact to each category.</p>
+                                </div>
+                                <div class="col-12 col-xl-6 p-2">
+                                    <canvas id="surveyBar">
+                                    </canvas>
+                                    <p>Your carbon footprint compared to your country's and world median.</p>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-4">
+                                <button type="button" class="btn btn-primary btn-lg px-4" id="survey-start-button" onclick="start_survey()">Retake the Survey
+                                </button>
+                            </div>
+                            <h5 class="mb-5">Or... read our <a href="{{ url_for("personal") }}"
+                                                         style="text-decoration: none;">articles</a>
+                                to find out how you can effectively reduce your carbon footprint and reverse the world's
+                                clepsydra.
+                            </h5>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
+    <script src="{{ url_for('static',filename='javascript/userProfileResults.js') }}"></script>
+
+    <script>
+        function start_survey() {
+            window.location = "/survey"
+        }
+
+        var ctxDoughnut = document.getElementById('surveyDoughnut').getContext('2d');
+
+        var ctxBar = document.getElementById('surveyBar').getContext('2d');
+
+        var doughnutData = [{{ user.cat1_number }}, {{ user.cat2_number }}, {{ user.cat3_number }}, {{ user.cat4_number }},];
+        var barData = [32000000, {{ all_results }}];
+
+        var doughnutChart = new Chart(ctxDoughnut, {
+            type: 'doughnut',
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        onClick: function (event, legendItem) {
+                        }
+                    }, layout: {
+                        padding: 20
+                    }
+                }
+            },
+            data: {
+                labels: [
+                    'Food',
+                    'Home',
+                    'Stuff',
+                    'Travel',
+                ], font: {
+                    size: 20
+                },
+                datasets: [{
+                    label: 'Survey Results',
+                    data: doughnutData,
+                    backgroundColor: [
+                        '#EC6B56',
+                        '#FFC154',
+                        '#118AB2',
+                        '#47B39C'
+                    ],
+                    hoverOffset: 4,
+                }]
+            }
+        });
+
+        var barChart = new Chart(ctxBar, {
+            type: 'bar',
+            options: {
+                aspectRatio: 1,
+                plugins: {
+                    legend: {
+                        display: false,
+                        position: 'bottom'
+                    }, layout: {
+                        padding: 20
+                    }, scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            },
+            data: {
+                labels: [
+                    'World average',
+                    'Your carbon footprint',
+                ], font: {
+                    size: 20
+                },
+                datasets: [{
+                    label: '',
+                    data: barData,
+                    backgroundColor: [
+                        '#FFC154',
+                        '#EC6B56',
+                    ],
+                    hoverOffset: 4,
+                }]
+            }
+        });
+
+    </script>
+
+{% endblock content %}
+

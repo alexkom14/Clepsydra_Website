@@ -1,0 +1,37 @@
+.footer {
+    color: white;
+    background-color:  #203b46; 
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+#footer-logo {
+    color: white;
+    display: inline-flex;
+}
+
+.footer a {
+    color: #f29040;
+    text-decoration: none;
+}
+
+#social-media-icons a {
+    font-size: 1.5rem;
+}
+
+#social-media-icons a:hover, .links a:hover {
+    color: white;
+}
+
+/*Disabling shadows*/
+#social-media-icons a:focus {
+    -webkit-box-shadow: 0 0px 0px 0px #999;
+    -moz-box-shadow: 0 0px 0px 0px #999;
+    box-shadow: 0 0px 0px 0px #999;
+}
+
+.copyright {
+    background-color: #172b33;
+    margin-bottom: 0rem;
+}

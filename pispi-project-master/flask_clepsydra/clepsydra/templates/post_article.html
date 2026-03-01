@@ -1,0 +1,123 @@
+{% extends 'layout.html' %}
+{% block cssfiles %}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/articles.css')}}">
+{%endblock cssfiles%}
+
+{% block info %}
+    <title>Clepsydra - {{legend}} Article</title>
+    <meta name="description" content=""/>
+{% endblock info %}
+
+{% block content %}
+<!--Jumbotron-->
+
+    <div class="jumbotron jumbotron-fluid hero  has-image ">
+        <div class="hero-overlay" style="background-image: url({{ url_for('static', filename='resources/hero_images/typographer.jpg') }});"
+            alt="Factory pipes">
+        </div>
+
+        <div class="container" id="hero_text">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h1><span>{{legend}} your article</span> </h1>
+                    <h2 id="article_title"> <span></span></h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<div class="content-section container col-md-8 mx-auto">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="pb-3 text-muted"><small>Fields with the * symbol are required</small></div>
+            <!-------------------Title-------------------->
+            <div class="form-group">
+                {{ form.title.label(class="form-control-label") }}*
+                {% if form.title.errors %}
+                    {{ form.title(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.title.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.title(class="form-control form-control-lg", required='required') }}
+                {% endif %}
+            </div>
+             <!-------------------Subtitle-------------------->
+            <div class="form-group my-3">
+                {{ form.subtitle.label(class="form-control-label") }}
+                {% if form.subtitle.errors %}
+                    {{ form.subtitle(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.subtitle.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.subtitle(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+             <!-------------------Author-------------------->
+            <div class="form-group my-3">
+                {{ form.author.label(class="form-control-label") }}*
+                {% if form.author.errors %}
+                    {{ form.author(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.author.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.author(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+             <!-------------------Category-------------------->
+            <div class="input-group my-4">
+                {{ form.category.label(class="form-check-label", type="radio") }}*
+                {% if form.category.errors %}
+                    {{ form.category(class="form-check is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.category.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.category(class="form-check", style="list-style: none; display:inline-block;") }}
+                {% endif %}
+            </div>
+             <!-------------------Image-------------------->
+            <div class="form-group my-4">
+                    {{ form.image.label() }}
+                    {{ form.image(class="form-control mt-2 ", type="file", accept="image/png, image/jpeg") }}
+                    {% if form.image.errors %}
+                        {% for error in form.image.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+             <!-------------------Content-------------------->
+            <div class="form-group">
+                {{ form.content.label(class="form-control-label") }}*
+                {% if form.content.errors %}
+                    {{ form.content(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.content.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.content(class="form-control form-control-lg", id="content-field") }}
+                {% endif %}
+            </div>
+        </fieldset>
+         <!-------------------Submit Button-------------------->
+        <div class="form-group my-4">
+            {{ form.submit(class="btn btn-outline-info form-buttons", id="submit-button") }}
+        </div>
+    </form>
+</div>
+{% endblock content %}

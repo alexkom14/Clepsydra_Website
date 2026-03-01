@@ -1,0 +1,27 @@
+:root {
+    --primary_color: #F29040;
+    --secondar_color: #203b46;
+ }
+
+/*back to top button*/
+#back_to_top_btn {
+    display: none; /* hidden at the beginning because we are at top */
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 0; /* so that it is below the carousel */
+    cursor: pointer;
+    color: var(--primary_color);
+    background-color: #172b33;
+    border: none;
+    padding: 7px 20px;
+    border-radius: 30px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+#back_to_top_btn:hover {
+    color: #172b33;
+    background-color: var(--primary_color);
+    transition: .4s;
+}

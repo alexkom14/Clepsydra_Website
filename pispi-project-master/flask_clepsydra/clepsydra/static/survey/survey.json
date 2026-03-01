@@ -1,0 +1,433 @@
+{
+  "categories": [
+    {
+      "categoryName": "food",
+      "questions": [
+        {
+          "title": "How would you best describe your diet?",
+          "type": "radiogroup",
+          "choices": [
+            "Meat in every meal",
+            "Meat in some meals",
+            "No beef",
+            "Meat very rarely",
+            "Vegetarian",
+            "Vegan"
+          ],
+          "answers": [
+            3300000,
+            2500000,
+            1900000,
+            1800000,
+            1700000,
+            1500000
+          ]
+        },
+        {
+          "title": "In a week, how much do you spend on food from restaurants, canteens and takeaways?",
+          "type": "radiogroup",
+          "choices": [
+            "€0",
+            "€1 - €10",
+            "€10 - €50",
+            "More than €50"
+          ],
+          "answers": [
+            0,
+            95000,
+            760000,
+            950000
+          ]
+        },
+        {
+          "title": "Of the food you buy how much is wasted and thrown away?",
+          "type": "radiogroup",
+          "choices": [
+            "None",
+            "0% - 10%",
+            "10% - 30%",
+            "More than 30%"
+          ],
+          "answers": [
+            0,
+            95000,
+            38000,
+            570000
+          ]
+        },
+        {
+          "title": "How often do you buy locally produced food that is not imported to your country?",
+          "type": "radiogroup",
+          "choices": [
+            "A lot of the food I buy is locally sourced",
+            "Some of the food I buy is locally sourced",
+            "I don't worry about where my food comes from"
+          ],
+          "answers": [
+            -330000,
+            -165000,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "categoryName": "home",
+      "questions": [
+        {
+          "title": "What kind of house do you live in?",
+          "type": "radiogroup",
+          "choices": [
+            "Detached",
+            "Semi detached",
+            "Terrace",
+            "Flat"
+          ],
+          "answers": [
+            2474346,
+            4948692,
+            6185865,
+            7423038
+          ]
+        },
+        {
+          "title": "How many people (aged 17 and over) live in your house?",
+          "type": "radiogroup",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5 or more"
+          ],
+          "answers": [
+            247434,
+            494869,
+            618586,
+            742303,
+            989738
+          ]
+        },
+        {
+          "title": "How do you primarily heat your home?",
+          "type": "radiogroup",
+          "choices": [
+            "Gas",
+            "Oil",
+            "Electricity",
+            "Wood"
+          ],
+          "answers": [
+            0,
+            429098,
+            858196,
+            1716392
+          ]
+        },
+        {
+          "title": "How warm do you keep your home in winter?",
+          "type": "radiogroup",
+          "choices": [
+            "below 14°C",
+            "14°C - 17°C",
+            "18°C - 21°C",
+            "Over 21°C"
+          ],
+          "answers": [
+            0,
+            429098,
+            858196,
+            1716392
+          ]
+        },
+        {
+          "title": "Do you regularly turn off lights and not leave your appliances on standby?",
+          "type": "radiogroup",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "answers": [
+            -247434,
+            0
+          ]
+        },
+        {
+          "title": "Which of these home energy efficiency improvements are installed in your home?",
+          "subtitle": "Tick all that apply or leave blank if not applicable",
+          "type": "checkbox",
+          "choices": [
+            "Energy saving lightbulbs",
+            "Loft insulation",
+            "Cavity or solid wall insulation",
+            "Condensing boiler",
+            "Double glazed windows",
+            "Low flow fittings to taps and showers",
+            "Solar panels",
+            "Solar water heater"
+          ],
+          "answers": [
+            -69715,
+            -63775,
+            -40542,
+            -63775,
+            -11516,
+            -69715,
+            -63775,
+            -40542
+          ]
+        }
+      ]
+    },
+    {
+      "categoryName": "stuff",
+      "questions": [
+        {
+          "title": "In the last 12 months, have you bought any of these new household items?",
+          "subtitle": "Tick all that apply or leave blank if not applicable",
+          "type": "checkbox",
+          "choices": [
+            "TV, laptop or PC",
+            "Large item of furniture",
+            "Washing machine, dishwasher, dryer or fridge freezer",
+            "Mobile phone or tablet"
+          ],
+          "answers": [
+            250000,
+            450000,
+            800000,
+            200000
+          ]
+        },
+        {
+          "title": "In a typical month, how much do you spend on clothes and footwear?",
+          "type": "radiogroup",
+          "choices": [
+            "€0",
+            "€1 - €50",
+            "€50 - €150",
+            "€150"
+          ],
+          "answers": [
+            0,
+            429098,
+            858196,
+            1716392
+          ]
+        },
+        {
+          "title": "In a typical month, how much do you spend on your pets and pet food?",
+          "type": "radiogroup",
+          "choices": [
+            "I don't have a pet",
+            "€1 - €10",
+            "€10 - €30",
+            "More than €30"
+          ],
+          "answers": [
+            0,
+            25000,
+            31000,
+            77000
+          ]
+        },
+        {
+          "title": "In a typical month, how much do you spend on health, beauty and grooming products?",
+          "type": "radiogroup",
+          "choices": [
+            "€0 - €10",
+            "€10 - €50",
+            "More than €50"
+          ],
+          "answers": [
+            0,
+            25000,
+            31000,
+            77000
+          ]
+        },
+        {
+          "title": "In a typical month, how much do you spend on phone, internet and TV contracts?",
+          "type": "radiogroup",
+          "choices": [
+            "€0",
+            "€1 - €30",
+            "€30 - €60",
+            "More than €60"
+          ],
+          "answers": [
+            0,
+            25000,
+            31000,
+            77000
+          ]
+        },
+        {
+          "title": "Which of these types of waste do you recycle and/or compost?",
+          "subtitle": "Tick all that apply or leave blank if not applicable",
+          "type": "checkbox",
+          "choices": [
+            "Food",
+            "Paper",
+            "Tin Cans",
+            "Plastic",
+            "Glass"
+          ],
+          "answers": [
+            -69715,
+            -63775,
+            -40542,
+            -16129,
+            -11516
+          ],
+          "constant": 313659
+        }
+      ]
+    },
+    {
+      "categoryName": "travel",
+      "questions": [
+        {
+          "title": "How do you travel most often, either as driver or passenger?",
+          "type": "radiogroup",
+          "expression": [
+            1,
+            2,
+            3
+          ],
+          "choices": [
+            "Car",
+            "Motorbike",
+            "Neither - I walk, cycle or use public transport for all my journeys"
+          ],
+          "answers": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "title": "Which of these best describes the vehicle you use most?",
+          "type": "radiogroup",
+          "choices": [
+            "Electric car",
+            "Plug-in Hybrid car",
+            "Hybrid car",
+            "Small petrol or diesel car",
+            "Medium petrol or diesel car",
+            "Large petrol or diesel car"
+          ],
+          "answers": [
+            21,
+            42,
+            55,
+            72,
+            104,
+            158
+          ],
+          "factor": true
+        },
+        {
+          "title": "How many hours a week do you spend in your car or on your motorbike for personal use including commuting?",
+          "type": "radiogroup",
+          "choices": [
+            "Under 2 hours",
+            "2 to 5 hours",
+            "5 to 15 hours",
+            "15 to 25 hours",
+            "Over 25 hours"
+          ],
+          "answers": [
+            5200,
+            9100,
+            26000,
+            52000,
+            65000
+          ]
+        },
+        {
+          "title": "How many hours a week do you spend on the train for personal use including commuting?",
+          "type": "radiogroup",
+          "choices": [
+            "I don't travel by train",
+            "Under 2 hours",
+            "2 to 5 hours",
+            "5 to 15 hours",
+            "15 to 25 hours",
+            "Over 25 hours"
+          ],
+          "answers": [
+            0,
+            72800,
+            127400,
+            364000,
+            728000,
+            910000
+          ]
+        },
+        {
+          "title": "How many hours a week do you spend on the bus for personal use including commuting?",
+          "type": "radiogroup",
+          "choices": [
+            "I don't travel by bus",
+            "Under 1 hours",
+            "1 to 3 hours",
+            "3 to 6 hours",
+            "6 to 10 hours",
+            "Over 10 hours"
+          ],
+          "answers": [
+            0,
+            72124,
+            144248,
+            324584,
+            577044,
+            721344
+          ]
+        },
+        {
+          "title": "What percentage of your flights do you offset?",
+          "type": "radiogroup",
+          "choices": [
+            "None of them",
+            "25%",
+            "50%",
+            "75%",
+            "All of them",
+            "Not applicable"
+          ],
+          "answers": [
+            1,
+            0.75,
+            0.5,
+            0.25,
+            0,
+            0
+          ],
+          "factor": true
+        },
+        {
+          "title": "In the last year, how many return flights have you made in total to the following locations?",
+          "subtitle": "Add number of flights or leave blank if not applicable",
+          "type": "dropdown",
+          "choices": [
+            "Up to 500 km away",
+            "Up to 1250 km away",
+            "Up to 2500 km away",
+            "Up to 5500 km away",
+            "Up to 9000 km away",
+            "Up to 17500 km away"
+          ],
+          "answers": [
+            285000,
+            712500,
+            1425000,
+            3135000,
+            5130000,
+            9975000
+          ]
+        }
+      ]
+    }
+  ]
+}

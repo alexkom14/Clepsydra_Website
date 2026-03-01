@@ -1,0 +1,71 @@
+<!--=============CAROUSEL==============-->
+
+    <div id="carouselIndicators" class="carousel slide" data-bs-ride="carousel">
+        <!-----Indicators------->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <!--Down Button-->
+        <a href="#articles-link">
+            <button type="button" class="btn-lg btn" id="carousel_down_button">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </a>
+        <!-----End Indicators------->
+
+        <!------Carousel Images------>
+        <div class="carousel-inner">
+            <div class="carousel-item active" id="test">
+                <img src="{{url_for('static', filename='resources/carousel_images/nasa-WKT3TE5AQu0-unsplash.jpg')}}" class="d-block w-100"
+                    alt="aerial-ocean">
+                <div class="carousel-caption d-none d-md-block container-fluid">
+                    <h2>Find out your carbon footprint</h2>
+                    <a href="/survey">
+                        <button type="button" class="btn btn-primary">Take Our Test</button>
+                    </a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{url_for('static', filename='resources/carousel_images/factory.jpg')}}" class="d-block w-100" alt="factory">
+                <div class="carousel-caption d-none d-md-block container-fluid">
+                    <h2>Find out your carbon footprint</h2>
+                    <a href="/survey">
+                        <button type="button" class="btn btn-primary">Take Our Test</button>
+                    </a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{url_for('static', filename='resources/carousel_images/plant.jpg')}}" class="d-block w-100" alt="plant">
+                <div class="carousel-caption d-none d-md-block container-fluid">
+                    <h2>Find out your carbon footprint</h2>
+                    <a href="/survey">
+                        <button type="button" class="btn btn-primary">Take Our Test</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-----End Carousel Images------>
+
+        <!------Control Buttons---->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+
+        <!------End Control Buttons---->
+    </div>
+
+    <!--=============END CAROUSEL==============-->
+
+    <div class="under_carousel_dummy"></div>

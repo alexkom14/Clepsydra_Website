@@ -1,0 +1,212 @@
+{% extends 'layout.html' %}
+{% block cssfiles %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/articles.css') }}">
+{% endblock cssfiles %}
+
+{% block info %}
+    <title>Clepsydra - {{article.title}}</title>
+    <meta name="description" content="This is a part of our collection of articles that deals with sustainability
+    renewability, harmful effects of practices on the environment and the impact we have on climate change."/>
+{% endblock info %}
+
+{% block content %}
+    <!--Jumbotron-->
+
+    <div class="jumbotron jumbotron-fluid hero  has-image ">
+        <div class="hero-overlay"
+             style="background-image: url({{ url_for('static', filename='resources/hero_images/'+ article.image) }});"
+             alt="Factory pipes">
+        </div>
+
+        <div class="container" id="hero_text">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h1><span>{{ article.title }}</span></h1>
+                    <h2 id="article_title"><span> {{ article.subtitle }} </span></h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--The main container for the article-->
+
+    <div class="container">
+        <div class="col-md-8 mx-auto">
+            <div class="col-md-10">
+                <h3 class="date">{{ article.date_posted.strftime('%B %d, %Y') }}</h3>
+                {% if is_admin %}
+                    <a class="btn mt-1 mb-1 blue_button"
+                       href="{{ url_for('update_article', article_id=article.id) }}">Update</a>
+                    <button type="button" class="btn m-1 delete_button" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal">Delete
+                    </button>
+                {% endif %}
+            </div>
+            <div class="underLine">
+                {{ article.content | safe }}
+            </div>
+            <p class="writer">{{ article.author }}</p>
+        </div>
+
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Are you sure you want to delete this article?</h5>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue_button" data-bs-dismiss="modal">No</button>
+                    <form action="{{ url_for('delete_article', article_id=article.id) }}" method="POST">
+                        <input class="btn delete_button" type="submit" value="Delete">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End article-->
+
+
+
+
+{% endblock %}
+
+
+
+{% block commentform %}
+    {# Base comment form  #}
+    <div class="container">
+        <div class="col-md-8 mx-auto">
+            {% if error_message %}
+                <h3>{{ error_message }}</h3>
+            {% endif %}
+            <form method="post" action="#" role="form">
+                {{ form.hidden_tag() }}
+                <div class="mb-3 px-2">
+                    <label for="textarea" class="form-label">Your opinion matters !</label>
+                    {{ form.comment1(class="form-control") }}
+                    <div class="form-group">{{ form.submit1(class="btn blue_button mt-2 submit" ) }}</div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block commentsection %}
+{#  Loop over the parents comments  #}
+    {% for comment in parent_comment.keys() %}
+        <div class="container">
+            <div class="col-md-8 mx-auto commentsection">
+                <div class="media d-flex ">
+                    {# user image #}
+                    <a class="mr-3" {% if current_user_id == comment.user_id %} href="{{ url_for('user_profile') }}" {% endif %}>
+                        <img src="/static/resources/user_images/avatar.png"
+                             class="align-self-start mr-3 rounded-circle "
+                             alt="user img">
+                    </a>
+                    <div class="media-body">
+                        <div class="container single_comment_container">
+                            {#  user name#}
+                            <P><a class="athor-name" {% if current_user_id == comment.user_id %}
+                                  href="{{ url_for('user_profile') }}" {% endif %} >{{ comment.username }}</a> Posted
+                                on: {{ comment.date_posted.strftime('%B %d, %Y') }}  </P>
+
+                            <P> {{ comment.comment }}  </P>
+                            {#---------delete  comment --------#}
+                            <div class="row-md-1 d-flex justify-content-end">
+                                {% if is_admin %}
+                                    <form method="post" action="#">
+                                        <div class="form-group">
+                                            {{ dform.hidden(value=comment.id) }}
+                                            {{ dform.submit2(class="btn btn-light btn-md mx-2 delete_button") }}</div>
+                                    </form>
+                                {% endif %}
+                                {# Reply form and reply button#}
+                                <div class="col-md-1">
+                                    <button class="btn blue_button btn-md mx-2 hide_reply">Reply</button>
+                                </div>
+                               {# ------------------ reply form -------------------- #}
+
+                                <div class="col-md-8 mx-auto hidden_reply reply_form">
+                                    <form method="post" action="#">
+                                        <div class="mb-3 px-2">
+                                            {{ csform.parent(value=comment.id) }}
+                                            {{ csform.comment2(class="form-control") }}
+                                            <div class="form-group">{{ csform.reply(class="btn blue_button mt-2 submit" ) }}</div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        {% for nested in parent_comment.get(comment) %}
+                           {# Loop over the nested comments - replies #}
+
+                            <div class="media d-flex">
+                                <a class="mr-3"
+                                   {# User image #}
+                                        {% if current_user_id == nested.user_id %} href="{{ url_for('user_profile') }} {% endif %} ">
+                                    <img src="/static/resources/user_images/avatar.png"
+                                         class="align-self-start mr-3 rounded-circle "
+                                         alt="user img">
+                                </a>
+                                <div class="media-body">
+                                    <div class="container single_comment_container">
+                                    {# username #}
+                                        <P><a class="athor-name" {% if current_user_id == nested.user_id %}
+                                              href="{{ url_for('user_profile') }}" {% endif %}>{{ nested.username }}</a>
+                                            Posted on: {{ nested.date_posted.strftime('%B %d, %Y') }} reply
+                                            to {{ nested.get_parent_username() }}</P>
+                                        <P> {{ nested.comment }} </P>
+                                        <div class="row-md-1 d-flex justify-content-end">
+
+                                            {# Delete comment if is_admin #}
+                                            {% if is_admin %}
+                                                <form method="post" action="#">
+                                                    <div class="form-group">
+                                                        {{ dform.hidden(value=nested.id) }}
+                                                        {{ dform.submit2(class="btn btn-light btn-md mx-2 delete_button") }}
+                                                    </div>
+                                                </form>
+                                            {% endif %}
+                                            {# reply button and form  #}
+                                            <div class="col-md-1">
+                                                <button class="btn blue_button btn-md mx-2 hide_reply">Reply</button>
+                                            </div>
+                                            {# ------------------ reply form -------------------- #}
+                                            <div class="col-md-8 mx-auto hidden_reply reply_form">
+                                                <form method="post" action="#" role="form">
+                                                    <div class="mb-3 px-2">
+                                                        {{ csform.parent(value=nested.id) }}
+                                                        {{ csform.comment2(class="form-control") }}
+                                                        <div class="form-group">{{ csform.reply(class="btn btn-primary blue_button mt-2 submit" ) }}</div>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    {% endfor %}
+
+{% endblock %}

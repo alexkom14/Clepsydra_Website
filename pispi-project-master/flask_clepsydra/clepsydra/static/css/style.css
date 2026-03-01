@@ -1,0 +1,127 @@
+.navbar {
+    background: linear-gradient(rgba(0, 0, 0, 0.589), rgba(0, 0, 0, 0));
+    width: 100%;
+    position:absolute;
+    top:0;
+    z-index:10;
+}
+
+.navbar a {
+    color: white  !important;
+}
+
+.color {
+    background-color: #203b46;
+}
+@media (min-width: 1430px) {
+    .carousel-item {
+        height: 101vh;
+    }
+}
+
+@media(max-width:990px) {
+    .carousel-caption {
+        top: 40%;
+        transform: translateY(-50%);
+        left: 40%;
+        transform: translateX(-40%);
+        
+    }
+}
+
+@media(min-width:991px) {
+.carousel-caption {
+    top: 20%;
+    transform: translateY(-50%);
+    right: 40%;
+    transform: translateX(-40%);
+    }
+}
+
+.carousel-caption h2 {
+    font-weight: 600;
+}
+
+.carousel-caption button {
+    background-color: rgba(255, 0, 0, 0);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-color: white;
+}
+
+.carousel-caption button:hover {
+    background-color: black;
+    border-color: black;
+    box-shadow: none;
+}
+
+.carousel_div {
+    top: 0;
+}
+
+/*---------SEARCH BAR CSS--------*/
+input.form-control:focus {
+    border-color: white;
+    -webkit-box-shadow: 0 0px 0px 0px #999;
+    -moz-box-shadow: 0 0px 0px 0px #999;
+    box-shadow: 0 0px 0px 0px #999;
+    background-color: #3636367e;
+    color: rgb(219, 219, 219);
+    transition: 0.4s;
+}
+
+input.form-control::placeholder {
+    color: rgb(216, 216, 216);
+}
+
+input.form-control {
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: solid;
+    border-left-style: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-color: white ;
+    color: white;
+    background-color: transparent;
+}
+/*--------END EARCH BAR CSS------*/
+
+#carousel_down_button {
+    position: absolute !important;
+    bottom: 5%!important;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    color: white;
+    background: transparent;
+    font-size: 2rem;
+}
+
+.carousel-indicators {
+    display: none;
+}
+
+/*underline effect*/
+#navbar-home-page .nav-item {
+    position: relative;
+}
+
+#navbar-home-page  .nav-item:after {
+    position: absolute;
+    bottom: 0.05rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background:white;
+    height: 1px;
+    transition: .5s;
+}
+
+#navbar-home-page  .nav-item:hover:after {
+    width: 100%;
+}

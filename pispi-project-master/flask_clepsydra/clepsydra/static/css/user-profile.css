@@ -1,0 +1,28 @@
+#pointer { 
+    cursor: pointer;
+}
+
+/* max-width number from bootstrap https://getbootstrap.com/docs/5.0/layout/breakpoints/#max-width */
+@media (max-width: 1199.98px) { 
+    .charts .col-12:first-child {
+        border-bottom: 1px solid black;
+        margin-bottom: 1.5rem;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.card-body {
+    /*padding-bottom: 20rem;*/
+
+}
+
+.footer {
+    color: white;
+    background-color:  #203b46;
+    width: 100%;
+    position: relative;
+}
